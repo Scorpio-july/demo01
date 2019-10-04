@@ -67,7 +67,6 @@ export default {
           return
         } else {
           this.$message.success('登陆成功')
-          console.log(res)
           window.sessionStorage.setItem('token', res.data.token)
           this.$router.push('/home')
         }
