@@ -18,7 +18,7 @@ axios.interceptors.response.use(function(res) {
     })
     // 配置请求拦截器
 axios.interceptors.request.use(function(config) {
-    config.headers.Authorization = window.sessionStorage.getItem('token');
+    config.headers.Authorization = window.sessionStorage.getItem('token')
     return config
 })
 Vue.prototype.$http = axios
