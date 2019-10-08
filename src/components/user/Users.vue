@@ -338,6 +338,9 @@ export default {
           email: this.editForm.email,
           mobile: this.editForm.mobile
         })
+        if (res.meta.status !== 200) {
+          return this.$message.error('删除用户失败')
+        }
         this.$message.success('修改用户信息成功')
         // 隐藏对话框
         this.editDialogVisible = false
