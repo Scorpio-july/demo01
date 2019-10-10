@@ -4,7 +4,7 @@
     <el-header>
       <div>
         <img src="../assets/heima.png" alt />
-        <span>街边小卖部后台管理系统</span>
+        <span>男男的街边小卖部后台管理系统</span>
       </div>
 
       <el-button type="success" @click="logout">退出登录</el-button>
