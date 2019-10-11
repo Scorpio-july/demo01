@@ -179,7 +179,7 @@ export default {
       addCateFormRules: {
         cat_name: [
           { required: true, message: '请输入分类名称', trigger: 'blur' },
-          { min: 3, max: 6, message: '长度在 3 到 6 个字符', trigger: 'blur' }
+          { min: 2, max: 6, message: '长度在 2 到 6 个字符', trigger: 'blur' }
         ]
       },
       // 父级分类的列表
