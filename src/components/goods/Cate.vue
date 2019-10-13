@@ -177,10 +177,7 @@ export default {
       },
       // 添加分类表单的验证规则
       addCateFormRules: {
-        cat_name: [
-          { required: true, message: '请输入分类名称', trigger: 'blur' },
-          { min: 2, max: 6, message: '长度在 2 到 6 个字符', trigger: 'blur' }
-        ]
+        cat_name: [{ required: true, message: '请输入分类名称', trigger: 'blur' }, { min: 2, max: 6, message: '长度在 2 到 6 个字符', trigger: 'blur' }]
       },
       // 父级分类的列表
       parentCateList: [],
@@ -202,10 +199,7 @@ export default {
       },
       // 添加分类表单的验证规则
       editCateFormRules: {
-        cat_name: [
-          { required: true, message: '请输入分类名称', trigger: 'blur' },
-          { min: 3, max: 6, message: '长度在 3 到 6 个字符', trigger: 'blur' }
-        ]
+        cat_name: [{ required: true, message: '请输入分类名称', trigger: 'blur' }, { min: 3, max: 6, message: '长度在 3 到 6 个字符', trigger: 'blur' }]
       }
     }
   },
@@ -250,9 +244,7 @@ export default {
       // 如果selectedKeys的长度为0则说明他没有父级分类
       if (this.selectedKeys.length !== 0) {
         //
-        this.addCateForm.cat_pid = this.selectedKeys[
-          this.selectedKeys.length - 1
-        ]
+        this.addCateForm.cat_pid = this.selectedKeys[this.selectedKeys.length - 1]
         this.addCateForm.cat_level = this.selectedKeys.length
       } else {
         this.addCateForm.cat_pid = 0

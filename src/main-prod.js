@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 
-import './plugins/element.js'
+// import './plugins/element.js'
 // 导入全局样式表
 import './assets/css/global.css'
 // 导入字体图标
@@ -13,19 +13,22 @@ import axios from 'axios'
 import TreeTable from 'vue-table-with-tree-grid'
 // 导入富文本插件
 import VueQuillEditor from 'vue-quill-editor'
-// require styles导入富文本编辑器对应的样式
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
+// 导入nprogresss
+import NProgress from 'nprogress'
+
 // 配置请求的根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
     // 配置响应拦截器
+    // 在响应拦截器中隐藏进度条
 axios.interceptors.response.use(function(res) {
+        NProgress.done()
         const data = res.data
         return data
     })
     // 配置请求拦截器
+    // 在请求拦截器中显示进度条
 axios.interceptors.request.use(function(config) {
+    NProgress.start()
     config.headers.Authorization = window.sessionStorage.getItem('token')
     return config
 })

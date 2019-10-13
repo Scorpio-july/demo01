@@ -316,11 +316,14 @@ export default {
     editRole() {
       // 提交前的预验证
       this.$refs.editFormRef.validate(async val => {
-        if (!val) return this.$message.error('修改用户信息失败')
+        if (!val) return this.$message.error('请重新填写表单信息')
         const res = await this.$http.put('roles/' + this.editRolesForm.roleId, {
           roleName: this.editRolesForm.roleName,
           roleDesc: this.editRolesForm.roleDesc
         })
+        if (res.meta.status !== 200) {
+          return this.$message.error('修改角色信息失败')
+        }
         this.$message.success('修改角色信息成功')
         // 隐藏对话框
         this.editDialogVisible = false
