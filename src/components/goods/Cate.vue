@@ -308,7 +308,6 @@ export default {
         const res = await this.$http.put('categories/' + this.editCateForm.id, {
           cat_name: this.editCateForm.cat_name
         })
-        console.log(res)
         if (res.meta.status !== 200) {
           return this.$message.error('编辑失败')
         }

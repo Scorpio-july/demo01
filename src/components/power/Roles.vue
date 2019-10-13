@@ -272,7 +272,6 @@ export default {
       const res = await this.$http.post(`roles/${this.roleId}/rights`, {
         rids: strId
       })
-      console.log(res)
       if (res.meta.status !== 200) {
         return this.$message.error('分配权限失败！')
       }
@@ -293,7 +292,6 @@ export default {
             return this.$message.error('角色添加失败')
           }
           this.$message.success('角色添加成功')
-          console.log(res)
 
           // 隐藏对话框
           this.addDialogVisible = false
@@ -323,7 +321,6 @@ export default {
           roleName: this.editRolesForm.roleName,
           roleDesc: this.editRolesForm.roleDesc
         })
-        console.log(res)
         this.$message.success('修改角色信息成功')
         // 隐藏对话框
         this.editDialogVisible = false

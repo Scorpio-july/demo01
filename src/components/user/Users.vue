@@ -287,7 +287,6 @@ export default {
       const res = await this.$http.put(
         'users/' + userInfo.id + '/state/' + userInfo.mg_state
       )
-      console.log(res)
       if (res.meta.status !== 200) {
         userInfo.mg_state = !userInfo.mg_state
         return this.$message.error('修改用户状态失败')
@@ -388,7 +387,6 @@ export default {
       const res = await this.$http.put(`users/${this.userInfo.id}/role`, {
         rid: this.selectRoleId
       })
-      console.log(res)
 
       if (res.meta.status !== 200) {
         return this.$message.error('分配角色失败')

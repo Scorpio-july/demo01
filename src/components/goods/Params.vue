@@ -333,7 +333,6 @@ export default {
             attr_sel: this.activeName
           }
         )
-        console.log(res)
 
         if (res.meta.status !== 201) {
           return this.$message.error('添加失败')
@@ -376,7 +375,6 @@ export default {
             attr_sel: this.activeName
           }
         )
-        console.log(res)
         if (res.meta.status !== 200) {
           return this.$message.error('编辑失败')
         }
