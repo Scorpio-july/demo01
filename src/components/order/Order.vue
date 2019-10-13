@@ -18,7 +18,7 @@
       </el-row>
 
       <!-- 订单列表区域 -->
-      <el-table :data="orderList" style="width: 100%" stripe border>
+      <el-table :data="orderList" style="width: 100%" stripe border row-key="id">
         <el-table-column type="index"></el-table-column>
         <el-table-column prop="order_number" label="订单编号"></el-table-column>
         <el-table-column prop="order_price" label="订单价格" width="150"></el-table-column>
@@ -125,12 +125,8 @@ export default {
       },
       // 修改地址表单的验证规则
       addressFormrules: {
-        address1: [
-          { required: true, message: '请选择省市区/县', trigger: 'blur' }
-        ],
-        address2: [
-          { required: true, message: '请输入详细地址', trigger: 'blur' }
-        ]
+        address1: [{ required: true, message: '请选择省市区/县', trigger: 'blur' }],
+        address2: [{ required: true, message: '请输入详细地址', trigger: 'blur' }]
       },
       // 省市区文件
       cityData,
