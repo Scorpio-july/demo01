@@ -133,25 +133,11 @@ export default {
       },
       // 添加表单的验证规则
       addFormRules: {
-        goods_name: [
-          { required: true, message: '请输入商品名称', trigger: 'blur' },
-          { min: 2, max: 25, message: '长度在 2 到 25 个字符', trigger: 'blur' }
-        ],
-        goods_price: [
-          { required: true, message: '请输入商品价格' },
-          { type: 'number', message: '商品价格必须为数字值' }
-        ],
-        goods_weight: [
-          { required: true, message: '请输入商品重量', trigger: 'blur' },
-          { type: 'number', message: '商品重量必须为数字值', trigger: 'blur' }
-        ],
-        goods_number: [
-          { required: true, message: '请输入商品数量', trigger: 'blur' },
-          { type: 'number', message: '商品数量必须为数字值', trigger: 'blur' }
-        ],
-        goods_cat: [
-          { required: true, message: '请选择商品分类', trigger: 'blur' }
-        ]
+        goods_name: [{ required: true, message: '请输入商品名称', trigger: 'blur' }, { min: 2, max: 25, message: '长度在 2 到 25 个字符', trigger: 'blur' }],
+        goods_price: [{ required: true, message: '请输入商品价格' }, { type: 'number', message: '商品价格必须为数字值' }],
+        goods_weight: [{ required: true, message: '请输入商品重量', trigger: 'blur' }, { type: 'number', message: '商品重量必须为数字值', trigger: 'blur' }],
+        goods_number: [{ required: true, message: '请输入商品数量', trigger: 'blur' }, { type: 'number', message: '商品数量必须为数字值', trigger: 'blur' }],
+        goods_cat: [{ required: true, message: '请选择商品分类', trigger: 'blur' }]
       },
       // 商品分类列表
       cateList: [],
@@ -214,30 +200,24 @@ export default {
     async tableClicked() {
       // 访问参数面板
       if (this.activeIndex === '1') {
-        const res = await this.$http.get(
-          `categories/${this.shopId}/attributes`,
-          {
-            params: { sel: 'many' }
-          }
-        )
+        const res = await this.$http.get(`categories/${this.shopId}/attributes`, {
+          params: { sel: 'many' }
+        })
         if (res.meta.status !== 200) {
           return this.$message.error('商品参数获取失败')
         }
+
         res.data.forEach(item => {
-          item.attr_vals =
-            item.attr_vals.length === 0 ? [] : item.attr_vals.split(' ')
+          item.attr_vals = item.attr_vals.length === 0 ? [] : item.attr_vals.split(' ')
         })
         this.manyTableData = res.data
       }
 
       // 访问属性面板
       if (this.activeIndex === '2') {
-        const res = await this.$http.get(
-          `categories/${this.shopId}/attributes`,
-          {
-            params: { sel: 'only' }
-          }
-        )
+        const res = await this.$http.get(`categories/${this.shopId}/attributes`, {
+          params: { sel: 'only' }
+        })
         if (res.meta.status !== 200) {
           return this.$message.error('商品属性获取失败')
         }
@@ -272,6 +252,7 @@ export default {
         const form = _.cloneDeep(this.addForm)
         form.goods_cat = form.goods_cat.join(',')
         // 处理动态参数
+
         this.manyTableData.forEach(item => {
           const newInfo = {
             attr_id: item.attr_id,
@@ -280,6 +261,7 @@ export default {
           this.addForm.attrs.push(newInfo)
         })
         // 处理静态属性
+
         this.onlyTableData.forEach(item => {
           const newInfo = {
             attr_id: item.attr_id,
@@ -289,6 +271,7 @@ export default {
         })
         form.attrs = this.addForm.attrs
         const res = await this.$http.post('goods', form)
+        
         if (res.meta.status !== 201) {
           return this.$message.error('添加失败')
         }

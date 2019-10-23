@@ -168,7 +168,7 @@ export default {
     },
     // 点击按钮查看物流信息
     async showProgressBox() {
-      const res = await this.$http.get('/kuaidi/' + 1106975712662)
+      const res = await this.$http.get('/kuaidi/' + 804909574412544580)
       if (res.meta.status !== 200) {
         return this.$message.error('获取物流信息失败')
       }

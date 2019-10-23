@@ -291,6 +291,7 @@ export default {
         this.onlyTableData = []
         return
       }
+      
       const res = await this.$http.get(`categories/${this.cateId}/attributes`, {
         params: { sel: this.activeName }
       })
